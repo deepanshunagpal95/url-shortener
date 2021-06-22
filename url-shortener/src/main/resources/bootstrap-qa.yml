@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    consul:
+      host: http://10.5.251.235
+      port: 8500
+      config:
+        watch:
+          enabled: true
+          wait-time: 5
+          delay: 120000
+        fail-fast: true
+        enabled: true
+        prefix: IRONMAN
+        defaultContext: application
+        data-key: airtel-sms-urlshortener
+        format: PROPERTIES
+

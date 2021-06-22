@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="300">
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=black, DEBUG=green bold, TRACE=blue}"/>
+        </Console>
+        <RollingFile name="AppFile"
+                     fileName="/app/online/airtel-sms-urlshortener/logs/urlshortener-app.log"
+                     filePattern="/app/online/airtel-sms-urlshortener/logs/archive/urlshortener-app-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=black}"/>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"
+                                           modulate="true"/>
+                <SizeBasedTriggeringPolicy size="500 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+        <RollingFile name="ConsoleLogs"
+                     fileName="/app/online/airtel-sms-urlshortener/logs/airtel-sms-urlshortener-console.log"
+                     filePattern="/app/online/airtel-sms-urlshortener/logs/archive/urlshortener-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=blue, DEBUG=green bold, TRACE=black}"/>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"
+                                           modulate="true"/>
+                <SizeBasedTriggeringPolicy size="500 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+
+    </Appenders>
+
+        <Loggers>
+            <!-- Root logger will be used only to have loggers for third party libraries. -->
+
+            <Root level="INFO">
+                <AppenderRef ref="ConsoleLogs" level="INFO"/>
+            </Root>
+           
+        </Loggers>
+</Configuration>

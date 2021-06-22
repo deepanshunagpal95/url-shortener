@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: qa
+server:
+  port: 8014
+
